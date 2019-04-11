@@ -37,6 +37,7 @@ class ListViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension ListViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return plants.count
     }

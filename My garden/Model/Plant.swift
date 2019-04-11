@@ -17,7 +17,7 @@ struct Plant {
     var photo: UIImage?
     var description: String
     var plantClass: PlantClass
-    var maturationTime: Double
+    var maturationTime: Double // in days
     var landingDate: Date
 }
 
@@ -30,12 +30,12 @@ extension Plant {
     }
     var displayMaturationDate: String {
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "dd/mm/YYYY"
+        dateFormater.dateFormat = "dd/M/YYYY"
         return dateFormater.string(from: maturationDate)
     }
     var displayLandingDate: String {
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "dd/mm/YYYY"
+        dateFormater.dateFormat = "dd/M/YYYY"
         return dateFormater.string(from: landingDate)
     }
 }
@@ -43,13 +43,13 @@ extension Plant {
 extension Plant {
     static func loadSample() -> [Plant] {
         return [
-            Plant(name: "Морковь", photo: UIImage(named: "carrots"), description: "Двулетнее растение, подвид вида морковь дикая. Обычно в быту под словом «морковь» подразумевается широко распространенный корнеплод именно этого растения", plantClass: .vegetable, maturationTime: 2, landingDate: Date()),
-            Plant(name: "Огурец", photo: UIImage(named: "cucumber"), description: "Однолетнее травянистое растение, вид рода Огурец (Cucumis) семейства Тыквенные (Cucurbitaceae), овощная культура.", plantClass: .vegetable, maturationTime: 2.5, landingDate: Date()),
-            Plant(name: "Укроп", photo: UIImage(named: "ukrop"), description: "В диком виде произрастает в Малой Азии, Северной Африке, Иране, Гималаях. Как культивируемое и сорное растение — повсеместно на всех континентах.", plantClass: .grass, maturationTime: 1.5, landingDate: Date()),
-            Plant(name: "Картофель", photo: UIImage(named: "potatoes"), description: "Вид многолетних клубненосных травянистых растений из рода Паслён (Solanum) семейства Паслёновые (Solanaceae). Клубни картофеля являются важным пищевым продуктом. Плоды ядовиты, в связи с содержанием в них соланина.", plantClass: .vegetable, maturationTime: 2.5, landingDate: Date()),
-            Plant(name: "Редис", photo: UIImage(named: "redis"), description: "Редис — съедобное растение и выращивается как овощ во многих странах мира. Его название происходит от лат. radix — корень.", plantClass: .vegetable, maturationTime: 1.7, landingDate: Date()),
-            Plant(name: "Баклажан", photo: UIImage(named: "baklajan"), description: "Вид многолетних травянистых растений рода Паслён (Solanum). Возделывается как однолетнее растение. Съедобен только плод. В ботаническом смысле это ягода, в кулинарном рассматривается как овощ.", plantClass: .vegetable, maturationTime: 2.3, landingDate: Date()),
-            Plant(name: "Клубника", photo: UIImage(named: "strawberry"), description: "Сладкая ягода крассного цвета, растет на кустах.", plantClass: .berry, maturationTime: 2.8, landingDate: Date()),
+            Plant(name: "Морковь", photo: UIImage(named: "carrots"), description: "Двулетнее растение, подвид вида морковь дикая. Обычно в быту под словом «морковь» подразумевается широко распространенный корнеплод именно этого растения", plantClass: .vegetable, maturationTime: 60, landingDate: Date()),
+            Plant(name: "Огурец", photo: UIImage(named: "cucumber"), description: "Однолетнее травянистое растение, вид рода Огурец (Cucumis) семейства Тыквенные (Cucurbitaceae), овощная культура.", plantClass: .vegetable, maturationTime: 85, landingDate: Date()),
+            Plant(name: "Укроп", photo: UIImage(named: "ukrop"), description: "В диком виде произрастает в Малой Азии, Северной Африке, Иране, Гималаях. Как культивируемое и сорное растение — повсеместно на всех континентах.", plantClass: .grass, maturationTime: 45, landingDate: Date()),
+            Plant(name: "Картофель", photo: UIImage(named: "potatoes"), description: "Вид многолетних клубненосных травянистых растений из рода Паслён (Solanum) семейства Паслёновые (Solanaceae). Клубни картофеля являются важным пищевым продуктом. Плоды ядовиты, в связи с содержанием в них соланина.", plantClass: .vegetable, maturationTime: 75, landingDate: Date()),
+            Plant(name: "Редис", photo: UIImage(named: "redis"), description: "Редис — съедобное растение и выращивается как овощ во многих странах мира. Его название происходит от лат. radix — корень.", plantClass: .vegetable, maturationTime: 50, landingDate: Date()),
+            Plant(name: "Баклажан", photo: UIImage(named: "baklajan"), description: "Вид многолетних травянистых растений рода Паслён (Solanum). Возделывается как однолетнее растение. Съедобен только плод. В ботаническом смысле это ягода, в кулинарном рассматривается как овощ.", plantClass: .vegetable, maturationTime: 67, landingDate: Date()),
+            Plant(name: "Клубника", photo: UIImage(named: "strawberry"), description: "Сладкая ягода крассного цвета, растет на кустах.", plantClass: .berry, maturationTime: 79, landingDate: Date()),
         ]
     }
 }
