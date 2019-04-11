@@ -37,7 +37,10 @@ extension DetailViewController {
         plantImage.image = plant.photo
         nameLabel.text = "(\(plant.plantClass.rawValue))"
         descriptionLabel.text = plant.description
-        infoLabel.text = "Время созревания: \(plant.maturationTime) месяцев"
+        infoLabel.text = """
+        Дата посадки: \(plant.displayLandingDate)
+        Дата сбора урожая: \(plant.displayMaturationDate)
+        """
         title = "\(plant.name)"
     }
     func updateUI(with size: CGSize){

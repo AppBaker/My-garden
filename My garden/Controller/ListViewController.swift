@@ -21,7 +21,7 @@ class ListViewController: UIViewController {
     }
     
     func saveMeals() {
-        //TODO: Save the meals
+        //TODO: Save the plant
     }
     func loadMeals() {
         plants = Plant.loadSample()
@@ -45,6 +45,7 @@ extension ListViewController: UITableViewDataSource {
         let row = indexPath.row
         let plant = plants[row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath)
+        cell.backgroundColor = indexPath.row % 2 == 0 ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
         configure(cell: cell, with: plant)
         return cell
     }
