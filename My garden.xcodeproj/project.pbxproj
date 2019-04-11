@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F391225F111C0029FEEC /* AppDelegate.swift */; };
-		E496F394225F111C0029FEEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F393225F111C0029FEEC /* ViewController.swift */; };
+		E496F394225F111C0029FEEC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F393225F111C0029FEEC /* ListViewController.swift */; };
 		E496F397225F111C0029FEEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E496F395225F111C0029FEEC /* Main.storyboard */; };
 		E496F399225F111E0029FEEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E496F398225F111E0029FEEC /* Assets.xcassets */; };
 		E496F39C225F111E0029FEEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E496F39A225F111E0029FEEC /* LaunchScreen.storyboard */; };
+		E496F3AA225F11DE0029FEEC /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F3A9225F11DE0029FEEC /* Plant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E496F38E225F111C0029FEEC /* My garden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My garden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E496F391225F111C0029FEEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E496F393225F111C0029FEEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E496F393225F111C0029FEEC /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		E496F396225F111C0029FEEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E496F398225F111E0029FEEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E496F39B225F111E0029FEEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E496F39D225F111E0029FEEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E496F3A9225F11DE0029FEEC /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,47 @@
 		E496F390225F111C0029FEEC /* My garden */ = {
 			isa = PBXGroup;
 			children = (
+				E496F3A8225F11870029FEEC /* Model */,
+				E496F3A7225F11800029FEEC /* View */,
+				E496F3A4225F11380029FEEC /* Controller */,
+				E496F3A3225F11280029FEEC /* Supporting Files */,
+			);
+			path = "My garden";
+			sourceTree = "<group>";
+		};
+		E496F3A3225F11280029FEEC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				E496F391225F111C0029FEEC /* AppDelegate.swift */,
-				E496F393225F111C0029FEEC /* ViewController.swift */,
-				E496F395225F111C0029FEEC /* Main.storyboard */,
 				E496F398225F111E0029FEEC /* Assets.xcassets */,
 				E496F39A225F111E0029FEEC /* LaunchScreen.storyboard */,
 				E496F39D225F111E0029FEEC /* Info.plist */,
 			);
-			path = "My garden";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E496F3A4225F11380029FEEC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E496F393225F111C0029FEEC /* ListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E496F3A7225F11800029FEEC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E496F395225F111C0029FEEC /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E496F3A8225F11870029FEEC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E496F3A9225F11DE0029FEEC /* Plant.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +170,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E496F394225F111C0029FEEC /* ViewController.swift in Sources */,
+				E496F394225F111C0029FEEC /* ListViewController.swift in Sources */,
+				E496F3AA225F11DE0029FEEC /* Plant.swift in Sources */,
 				E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5MS39QS696;
-				INFOPLIST_FILE = "My garden/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/My garden/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5MS39QS696;
-				INFOPLIST_FILE = "My garden/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/My garden/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
