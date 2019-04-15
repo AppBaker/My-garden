@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E43731DD226427B700F3E4C5 /* PlantListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43731DC226427B700F3E4C5 /* PlantListTableViewCell.swift */; };
 		E4780F7E225F1DD900B7D8B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4780F7D225F1DD900B7D8B1 /* DetailViewController.swift */; };
 		E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F391225F111C0029FEEC /* AppDelegate.swift */; };
 		E496F394225F111C0029FEEC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F393225F111C0029FEEC /* ListViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E43731DC226427B700F3E4C5 /* PlantListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListTableViewCell.swift; sourceTree = "<group>"; };
 		E4780F7D225F1DD900B7D8B1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E4780F7F225F4B5100B7D8B1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E496F38E225F111C0029FEEC /* My garden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My garden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				E496F395225F111C0029FEEC /* Main.storyboard */,
+				E43731DC226427B700F3E4C5 /* PlantListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				E496F394225F111C0029FEEC /* ListViewController.swift in Sources */,
 				E496F3AA225F11DE0029FEEC /* Plant.swift in Sources */,
 				E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */,
+				E43731DD226427B700F3E4C5 /* PlantListTableViewCell.swift in Sources */,
 				E4780F7E225F1DD900B7D8B1 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

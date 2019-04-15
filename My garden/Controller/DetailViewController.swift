@@ -13,20 +13,35 @@ class DetailViewController: UIViewController {
     var plant: Plant?
 
     @IBOutlet weak var plantImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var sortLabel: UILabel!
+    @IBOutlet weak var dateLable: UILabel!
+    @IBOutlet weak var expectedYieldLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var infoLabel: UILabel!
+    
     @IBOutlet weak var topStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        descriptionLabel.numberOfLines = 0
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         updateUI(with: size)
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if view.frame.height > view.frame.width {
+            topStackView.axis = .vertical
+        } else {
+            topStackView.axis = .horizontal
+        }
     }
     
 }
@@ -34,16 +49,23 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     func setupUI() {
         guard let plant = plant else { return }
+        title = plant.name
         plantImage.image = plant.photo
-        nameLabel.text = "(\(plant.plantClass.rawValue))"
-        descriptionLabel.text = plant.description
-        infoLabel.text = """
+        sortLabel.text = "Сорт - \"\(plant.sort)\""
+        dateLable.text = """
         Дата посадки: \(plant.displayLandingDate)
         Дата сбора урожая: \(plant.displayMaturationDate)
         """
-        title = "\(plant.name)"
+        expectedYieldLabel.text = """
+            Ожидаемый урожай \(plant.expectedYield) Kg
+            С площади \(plant.squareOfPlant) соток
+        """
+        descriptionLabel.text = plant.description
+
+        
     }
     func updateUI(with size: CGSize){
         topStackView.axis = size.width < size.height ? .vertical :  .horizontal
+
     }
 }

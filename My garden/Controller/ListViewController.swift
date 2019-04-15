@@ -45,7 +45,7 @@ extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let plant = plants[row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as! PlantListTableViewCell
         cell.backgroundColor = indexPath.row % 2 == 0 ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
         configure(cell: cell, with: plant)
         return cell
@@ -53,11 +53,13 @@ extension ListViewController: UITableViewDataSource {
 }
 // MARK: - Custom Methods
 extension ListViewController {
-    func configure(cell: UITableViewCell, with plant: Plant) {
-
-        cell.imageView?.image = plant.photo
-        cell.textLabel?.text = plant.name
-        cell.detailTextLabel?.text = plant.plantClass.rawValue
+    func configure(cell: PlantListTableViewCell, with plant: Plant) {
+        cell.plantImageView.image = plant.photo
+        cell.nameLabel.text = plant.name + " (\(plant.plantClass.rawValue))"
+        cell.sortLabel.text = "сорт - \"\(plant.sort)\""
+        cell.dateOfPlantLabel.text = "Дата посева " + plant.displayLandingDate
+        cell.harwestTimeLable.text = "Сбор урожая " + plant.displayMaturationDate
+        cell.squareOfPlantLable.text = "Площадь посевов: \(plant.squareOfPlant) соток"
     }
 }
 
