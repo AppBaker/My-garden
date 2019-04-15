@@ -15,6 +15,7 @@
 		E496F399225F111E0029FEEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E496F398225F111E0029FEEC /* Assets.xcassets */; };
 		E496F39C225F111E0029FEEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E496F39A225F111E0029FEEC /* LaunchScreen.storyboard */; };
 		E496F3AA225F11DE0029FEEC /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F3A9225F11DE0029FEEC /* Plant.swift */; };
+		E4C51793226450D0009586EF /* AddNewPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C51792226450D0009586EF /* AddNewPlantViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		E496F39B225F111E0029FEEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E496F39D225F111E0029FEEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E496F3A9225F11DE0029FEEC /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		E4C51792226450D0009586EF /* AddNewPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPlantViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				E496F393225F111C0029FEEC /* ListViewController.swift */,
 				E4780F7D225F1DD900B7D8B1 /* DetailViewController.swift */,
+				E4C51792226450D0009586EF /* AddNewPlantViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				E496F394225F111C0029FEEC /* ListViewController.swift in Sources */,
 				E496F3AA225F11DE0029FEEC /* Plant.swift in Sources */,
 				E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */,
+				E4C51793226450D0009586EF /* AddNewPlantViewController.swift in Sources */,
 				E43731DD226427B700F3E4C5 /* PlantListTableViewCell.swift in Sources */,
 				E4780F7E225F1DD900B7D8B1 /* DetailViewController.swift in Sources */,
 			);
