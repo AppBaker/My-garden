@@ -8,8 +8,11 @@
 
 import UIKit
 
-enum PlantClass: String {
-    case vegetable = "овощи", fruit = "фрукты", berry = "ягода", grass = "трава"
+enum PlantClass: String, CaseIterable {
+    case vegetable = "овощи"
+    case fruit = "фрукты"
+    case berry = "ягода"
+    case grass = "трава"
 }
 
 struct Plant {
@@ -18,7 +21,7 @@ struct Plant {
     var photo: UIImage?
     var description: String
     var plantClass: PlantClass
-    var maturationTime: Double // in days
+    var maturationTime: Int // in days
     var landingDate: Date
     var squareOfPlant: Double // * 100 m square
     var yield: Double
@@ -27,7 +30,7 @@ struct Plant {
 // MARK: - Computed properties
 extension Plant {
     var maturationDate: Date {
-        let timeInterval = Double(60 * 60 * 24) * maturationTime
+        let timeInterval = Double(60 * 60 * 24 * maturationTime)
         let date = landingDate.addingTimeInterval(timeInterval)
         return date
     }

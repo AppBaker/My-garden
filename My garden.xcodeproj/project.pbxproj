@@ -15,6 +15,7 @@
 		E496F399225F111E0029FEEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E496F398225F111E0029FEEC /* Assets.xcassets */; };
 		E496F39C225F111E0029FEEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E496F39A225F111E0029FEEC /* LaunchScreen.storyboard */; };
 		E496F3AA225F11DE0029FEEC /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F3A9225F11DE0029FEEC /* Plant.swift */; };
+		E49E4EF42264C64000B7A3AF /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49E4EF32264C64000B7A3AF /* UITextField+Extension.swift */; };
 		E4C51793226450D0009586EF /* AddNewPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C51792226450D0009586EF /* AddNewPlantViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		E496F39B225F111E0029FEEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E496F39D225F111E0029FEEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E496F3A9225F11DE0029FEEC /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		E49E4EF32264C64000B7A3AF /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		E4C51792226450D0009586EF /* AddNewPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPlantViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +66,7 @@
 		E496F390225F111C0029FEEC /* My garden */ = {
 			isa = PBXGroup;
 			children = (
+				E49E4EF22264C5DD00B7A3AF /* Extensions */,
 				E496F3A8225F11870029FEEC /* Model */,
 				E496F3A7225F11800029FEEC /* View */,
 				E496F3A4225F11380029FEEC /* Controller */,
@@ -108,6 +111,15 @@
 				E496F3A9225F11DE0029FEEC /* Plant.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E49E4EF22264C5DD00B7A3AF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E49E4EF32264C64000B7A3AF /* UITextField+Extension.swift */,
+			);
+			name = Extensions;
+			path = Controller/Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +195,7 @@
 			files = (
 				E496F394225F111C0029FEEC /* ListViewController.swift in Sources */,
 				E496F3AA225F11DE0029FEEC /* Plant.swift in Sources */,
+				E49E4EF42264C64000B7A3AF /* UITextField+Extension.swift in Sources */,
 				E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */,
 				E4C51793226450D0009586EF /* AddNewPlantViewController.swift in Sources */,
 				E43731DD226427B700F3E4C5 /* PlantListTableViewCell.swift in Sources */,
