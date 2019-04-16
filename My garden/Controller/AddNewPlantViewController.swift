@@ -21,7 +21,7 @@ class AddNewPlantViewController: UIViewController {
     @IBOutlet weak var landingDateTextField: UITextField!
     @IBOutlet weak var maturationTimeTextField: UITextField!
     @IBOutlet weak var squareTextField: UITextField!
-    @IBOutlet weak var yieldTextField: UITextField!
+    @IBOutlet weak var harvestTextField: UITextField!
     //pickers
     var pickerOfPlantClass = UIPickerView()
     var datePicker = UIDatePicker()
@@ -66,6 +66,11 @@ class AddNewPlantViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showPlant()
+        updateUI()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        savePlant()
     }
     
     @objc func donePicker() {
@@ -154,18 +159,18 @@ extension AddNewPlantViewController: UIPickerViewDataSource, UIPickerViewDelegat
 // MARK: - Methods
 extension AddNewPlantViewController {
     func areFieldsReady() -> Bool {
-        return !nameTextField.isEmpty && !sortTextField.isEmpty && !descriptionTextField.isEmpty && !plantClassTextField.isEmpty && !landingDateTextField.isEmpty && !maturationTimeTextField.isEmpty && !squareTextField.isEmpty && !yieldTextField.isEmpty
+        return !nameTextField.isEmpty && !sortTextField.isEmpty && !descriptionTextField.isEmpty && !plantClassTextField.isEmpty && !landingDateTextField.isEmpty && !maturationTimeTextField.isEmpty && !squareTextField.isEmpty && !harvestTextField.isEmpty
     }
     
     func savePlant() {
-        plant.name = nameTextField.text ?? ""
-        plant.sort = sortTextField.text ?? ""
-        plant.description = descriptionTextField.text ?? ""
-        plant.plantClass = plantClass
-        plant.landingDate = landingDate
-        plant.maturationTime = Int(maturationTimeTextField.text ?? "0") ?? 0
-        plant.squareOfPlant = Double(squareTextField.text ?? "0") ?? 0
-        plant.harvest = Double(yieldTextField.text ?? "0") ?? 0
+            plant.name = nameTextField.text ?? ""
+            plant.sort = sortTextField.text ?? ""
+            plant.description = descriptionTextField.text ?? ""
+            plant.plantClass = plantClass
+            plant.landingDate = landingDate
+            plant.maturationTime = Int(maturationTimeTextField.text ?? "0") ?? 0
+            plant.squareOfPlant = Double(squareTextField.text ?? "0") ?? 0
+            plant.harvest = Double(harvestTextField.text ?? "0") ?? 0
     }
     
     func showPlant() {
@@ -187,7 +192,7 @@ extension AddNewPlantViewController {
 
         maturationTimeTextField.text = "\(plant.maturationTime)"
         squareTextField.text = "\(plant.squareOfPlant)"
-        yieldTextField.text = "\(plant.harvest)"
+        harvestTextField.text = "\(plant.harvest)"
     }
     
     

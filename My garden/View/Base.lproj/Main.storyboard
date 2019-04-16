@@ -30,34 +30,34 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IuP-58-hHZ">
-                                                    <rect key="frame" x="111" y="19" width="416" height="101"/>
+                                                    <rect key="frame" x="111" y="19" width="168" height="101"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3M-NA-nIQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="416" height="16"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="168" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="221-ax-Q2x">
-                                                            <rect key="frame" x="0.0" y="24" width="416" height="13.5"/>
+                                                            <rect key="frame" x="0.0" y="24" width="168" height="13.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of plant" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6FQ-EP-WWT">
-                                                            <rect key="frame" x="0.0" y="45.5" width="416" height="14"/>
+                                                            <rect key="frame" x="0.0" y="45.5" width="168" height="14"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvest date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVo-gk-f6a">
-                                                            <rect key="frame" x="0.0" y="67.5" width="416" height="13.5"/>
+                                                            <rect key="frame" x="0.0" y="67.5" width="168" height="13.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Square of plant" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDR-vK-0Aa">
-                                                            <rect key="frame" x="0.0" y="89" width="416" height="12"/>
+                                                            <rect key="frame" x="0.0" y="89" width="168" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -355,6 +355,7 @@
                     <connections>
                         <outlet property="addImageButton" destination="M7s-RQ-V9r" id="EVt-7x-uyv"/>
                         <outlet property="descriptionTextField" destination="5X6-nR-nl3" id="0hE-he-aKl"/>
+                        <outlet property="harvestTextField" destination="dV6-3x-MbX" id="6YM-Vv-Bke"/>
                         <outlet property="landingDateTextField" destination="2Oo-5u-0jW" id="jA2-bR-J1w"/>
                         <outlet property="maturationTimeTextField" destination="0RJ-0Q-2Il" id="7qM-4y-JzI"/>
                         <outlet property="nameTextField" destination="xIh-7R-s8G" id="7L2-VR-PMw"/>
@@ -363,7 +364,6 @@
                         <outlet property="scrollView" destination="39A-ct-u6C" id="Xkh-PN-9Nj"/>
                         <outlet property="sortTextField" destination="s4i-WO-oT0" id="cNa-Rg-dvy"/>
                         <outlet property="squareTextField" destination="tk6-lY-Ssi" id="UB3-vt-BxQ"/>
-                        <outlet property="yieldTextField" destination="dV6-3x-MbX" id="6YM-Vv-Bke"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rja-WT-eNP" userLabel="First Responder" sceneMemberID="firstResponder"/>

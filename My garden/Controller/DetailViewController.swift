@@ -75,6 +75,7 @@ extension DetailViewController {
     }
 }
 
+// MARK: - Navigation
 extension DetailViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
