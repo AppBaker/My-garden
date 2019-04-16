@@ -29,7 +29,7 @@ struct Plant {
     var squareOfPlant: Double // * 100 m square
     var harvest: Double
     
-    init(name: String = "", sort: String = "", photo: String = "noPhoto", description: String = "", plantClass: PlantClass = .none, maturationTime: Int = 0, landingDate: Date = Date(), squareOfPlant: Double = 0, harvest: Double = 0) {
+    init(name: String = "", sort: String = "", photo: String = "addPhoto", description: String = "", plantClass: PlantClass = .none, maturationTime: Int = 0, landingDate: Date = Date(), squareOfPlant: Double = 0, harvest: Double = 0) {
         self.name = name
         self.sort = sort
         self.photo = photo
