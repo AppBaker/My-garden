@@ -37,6 +37,7 @@ class AddNewPlantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        pickersSetup()
         registerForKeyboardNotification()
         
         pickerOfPlantClass.delegate = self
@@ -44,24 +45,6 @@ class AddNewPlantViewController: UIViewController {
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-        
-        plantClassTextField.inputView = pickerOfPlantClass
-        landingDateTextField.inputView = datePicker
-        datePicker.datePickerMode = .date
-
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.black
-        toolBar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(donePicker))
-        
-        toolBar.setItems([doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        
-        plantClassTextField.inputView = pickerOfPlantClass
-        plantClassTextField.inputAccessoryView = toolBar
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -72,10 +55,7 @@ class AddNewPlantViewController: UIViewController {
         super.viewWillDisappear(animated)
         savePlant()
     }
-    
-    @objc func donePicker() {
-        plantClassTextField.resignFirstResponder()
-    }
+
     //MARK: - IBActions
     
     @IBAction func abbImageButtonPressed(_ sender: UIButton) {
@@ -120,6 +100,50 @@ extension AddNewPlantViewController {
 
 // MARK: - UIPickerViewDataSource, UIPickerViewDelegate
 extension AddNewPlantViewController: UIPickerViewDataSource, UIPickerViewDelegate{
+    
+    func pickersSetup() {
+        
+        //LandingDate Picker
+        datePicker.datePickerMode = .date
+        
+        let toolBarDatePicker = UIToolbar()
+        toolBarDatePicker.barStyle = UIBarStyle.default
+        toolBarDatePicker.isTranslucent = true
+        toolBarDatePicker.tintColor = UIColor.black
+        toolBarDatePicker.sizeToFit()
+        
+        let doneButtonDate = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(doneDatePicker))
+        toolBarDatePicker.setItems([doneButtonDate], animated: false)
+        toolBarDatePicker.isUserInteractionEnabled = true
+        
+        landingDateTextField.inputView = datePicker
+        landingDateTextField.inputAccessoryView = toolBarDatePicker
+        
+        //plantClass picker
+        
+        plantClassTextField.inputView = pickerOfPlantClass
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.black
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(donePicker))
+        
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        plantClassTextField.inputView = pickerOfPlantClass
+        plantClassTextField.inputAccessoryView = toolBar
+    }
+    
+    @objc func donePicker() {
+        plantClassTextField.resignFirstResponder()
+    }
+    
+    @objc func doneDatePicker() {
+        landingDateTextField.resignFirstResponder()
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
