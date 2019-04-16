@@ -54,7 +54,11 @@ extension ListViewController: UITableViewDataSource {
 // MARK: - Custom Methods
 extension ListViewController {
     func configure(cell: PlantListTableViewCell, with plant: Plant) {
-        cell.plantImageView.image = plant.photo
+        if let image = plant.image {
+            cell.plantImageView.image = image
+        } else {
+            cell.plantImageView.image = UIImage(named: plant.photo)
+        }
         cell.nameLabel.text = plant.name + " (\(plant.plantClass.rawValue))"
         cell.sortLabel.text = "сорт - \"\(plant.sort)\""
         cell.dateOfPlantLabel.text = "Дата посева " + plant.displayLandingDate
@@ -71,6 +75,15 @@ extension ListViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         controller.plant = plants[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    @IBAction func unwind(segue: UIStoryboardSegue) {
+        guard segue.identifier == "addNewPlant" else { return }
+        guard let controller = segue.source as? AddNewPlantViewController else { return }
+        let plant = controller.plant
+        let indexPath = IndexPath(row: plants.count, section: 0)
+        plants.append(plant)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
 }
 

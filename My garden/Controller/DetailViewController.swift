@@ -50,7 +50,11 @@ extension DetailViewController {
     func setupUI() {
         guard let plant = plant else { return }
         title = plant.name
-        plantImage.image = plant.photo
+        if let image = plant.image {
+            plantImage.image = image
+        } else {
+            plantImage.image = UIImage(named: plant.photo)            
+        }
         sortLabel.text = "Сорт - \"\(plant.sort)\""
         dateLable.text = """
         Дата посадки: \(plant.displayLandingDate)
