@@ -31,19 +31,22 @@ class AddNewPlantViewController: UIViewController {
     var plantClass: PlantClass!
     var landingDate: Date!
     
+    var plantIndex: IndexPath?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         registerForKeyboardNotification()
+        
         pickerOfPlantClass.delegate = self
         pickerOfPlantClass.dataSource = self
+        
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
         plantClassTextField.inputView = pickerOfPlantClass
         landingDateTextField.inputView = datePicker
-        
         datePicker.datePickerMode = .date
 
         let toolBar = UIToolbar()
@@ -60,9 +63,12 @@ class AddNewPlantViewController: UIViewController {
         plantClassTextField.inputView = pickerOfPlantClass
         plantClassTextField.inputAccessoryView = toolBar
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showPlant()
+    }
     
     @objc func donePicker() {
-        
         plantClassTextField.resignFirstResponder()
     }
     //MARK: - IBActions
@@ -162,6 +168,28 @@ extension AddNewPlantViewController {
         plant.harvest = Double(yieldTextField.text ?? "0") ?? 0
     }
     
+    func showPlant() {
+        if let image = plant.image {
+            addImageButton.setImage(image, for: [])
+        } else {
+            addImageButton.setImage(UIImage(named: plant.photo), for: [])
+        }
+        nameTextField.text = plant.name
+        sortTextField.text = plant.sort
+        descriptionTextField.text = plant.description
+        plantClassTextField.text = plant.plantClass.rawValue
+        plantClass = plant.plantClass
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        landingDateTextField.text = dateFormatter.string(from: plant.landingDate)
+        landingDate = plant.landingDate
+
+        maturationTimeTextField.text = "\(plant.maturationTime)"
+        squareTextField.text = "\(plant.squareOfPlant)"
+        yieldTextField.text = "\(plant.harvest)"
+    }
+    
     
     @IBAction func textFieldChanged() {
         updateUI()
@@ -224,5 +252,6 @@ extension AddNewPlantViewController: UIImagePickerControllerDelegate, UINavigati
             plant.image = resizedImage
         }
         imagePicker.dismiss(animated: true, completion: nil)
+        updateUI()
     }
 }

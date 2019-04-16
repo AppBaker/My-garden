@@ -10,7 +10,6 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var plant: Plant?
 
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var sortLabel: UILabel!
@@ -19,6 +18,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var topStackView: UIStackView!
+    
+    var plant: Plant?
+    var plantIndex: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +72,18 @@ extension DetailViewController {
     }
     func updateUI(with size: CGSize){
         topStackView.axis = size.width < size.height ? .vertical :  .horizontal
+    }
+}
 
+extension DetailViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let plant = plant else { return }
+        guard segue.identifier == "editPlantSegue" else { return }
+        guard let plantIndex = plantIndex else { return }
+        let controller = segue.destination as! AddNewPlantViewController
+        
+        controller.plant = plant
+        controller.plantIndex = plantIndex
     }
 }

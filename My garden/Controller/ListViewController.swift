@@ -74,6 +74,7 @@ extension ListViewController {
         let controller = segue.destination as! DetailViewController
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         controller.plant = plants[indexPath.row]
+        controller.plantIndex = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -81,9 +82,14 @@ extension ListViewController {
         guard segue.identifier == "addNewPlant" else { return }
         guard let controller = segue.source as? AddNewPlantViewController else { return }
         let plant = controller.plant
-        let indexPath = IndexPath(row: plants.count, section: 0)
-        plants.append(plant)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        if let plantIndex = controller.plantIndex {
+            plants[plantIndex.row] = plant
+            tableView.reloadRows(at: [plantIndex], with: .automatic)
+        } else {
+            let indexPath = IndexPath(row: plants.count, section: 0)
+            plants.append(plant)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        }
     }
 }
 
