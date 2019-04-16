@@ -16,23 +16,9 @@ class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadMeals()
+        plants = Plant.loadSample()
         setupUI()
     }
-    
-    func saveMeals() {
-        //TODO: Save the plant
-    }
-    func loadMeals() {
-        plants = Plant.loadSample()
-    }
-    
-    func setupUI() {
-        tableView.dataSource = self
-        tableView.delegate = self
-    }
-    
-    
 }
 
 // MARK: - UITableViewDataSource
@@ -50,20 +36,34 @@ extension ListViewController: UITableViewDataSource {
         configure(cell: cell, with: plant)
         return cell
     }
+    
 }
 // MARK: - Custom Methods
 extension ListViewController {
+    
+    func setupUI() {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
     func configure(cell: PlantListTableViewCell, with plant: Plant) {
         if let image = plant.image {
             cell.plantImageView.image = image
         } else {
             cell.plantImageView.image = UIImage(named: plant.photo)
         }
+        let formatter = NumberFormatter()
+        formatter.usesSignificantDigits = true
+        formatter.decimalSeparator = ","
+        
         cell.nameLabel.text = plant.name + " (\(plant.plantClass.rawValue))"
         cell.sortLabel.text = "сорт - \"\(plant.sort)\""
         cell.dateOfPlantLabel.text = "Дата посева " + plant.displayLandingDate
         cell.harwestTimeLable.text = "Сбор урожая " + plant.displayMaturationDate
         cell.squareOfPlantLable.text = "Площадь посевов: \(plant.squareOfPlant) соток"
+        cell.showsReorderControl = true
+        
+        
     }
 }
 

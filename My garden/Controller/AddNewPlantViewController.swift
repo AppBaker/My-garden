@@ -60,8 +60,8 @@ class AddNewPlantViewController: UIViewController {
     
     @IBAction func abbImageButtonPressed(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: "Фото", message: "Выбрать фотографию", preferredStyle: .alert)
-        let cameraAction = UIAlertAction(title: "Камера", style: .default) { (action) in
+        let alert = UIAlertController(title: "Photo", message: "Choose photo", preferredStyle: .alert)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         }
@@ -69,9 +69,11 @@ class AddNewPlantViewController: UIViewController {
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         alert.addAction(cameraAction)
         alert.addAction(libraryAction)
+        alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
     }
