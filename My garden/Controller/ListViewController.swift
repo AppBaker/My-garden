@@ -8,22 +8,28 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var plants = [Plant]()
-
+    var plants = Plants.loadSample()
+    var isEditingOn: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        plants = Plant.loadSample()
         setupUI()
+        navigationItem.leftBarButtonItem = editButtonItem
+        title = plants.title
+    }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: true)
     }
 }
 
 // MARK: - UITableViewDataSource
 extension ListViewController: UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return plants.count
     }
@@ -31,12 +37,37 @@ extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let plant = plants[row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as! PlantListTableViewCell
-        cell.backgroundColor = indexPath.row % 2 == 0 ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath)
         configure(cell: cell, with: plant)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        let movedPlant = plants.remove(at: sourceIndexPath.row)
+        plants.insert(movedPlant, at: destinationIndexPath.row)
+        tableView.reloadData()
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.plants.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+//            tableView.reloadData()
+        }
+        return [deleteAction]
+    }
 }
 // MARK: - Custom Methods
 extension ListViewController {
@@ -46,24 +77,25 @@ extension ListViewController {
         tableView.delegate = self
     }
     
-    func configure(cell: PlantListTableViewCell, with plant: Plant) {
+    /// Cell configurator
+    ///
+    /// - Parameters:
+    ///   - cell: Cell for confing
+    ///   - plant: Data for confing
+    func configure(cell: UITableViewCell, with plant: Plant) {
+        guard let cell = cell as? PlantListTableViewCell else { return }
         if let image = plant.image {
             cell.plantImageView.image = image
         } else {
             cell.plantImageView.image = UIImage(named: plant.photo)
         }
-        let formatter = NumberFormatter()
-        formatter.usesSignificantDigits = true
-        formatter.decimalSeparator = ","
         
         cell.nameLabel.text = plant.name + " (\(plant.plantClass.rawValue))"
         cell.sortLabel.text = "сорт - \"\(plant.sort)\""
         cell.dateOfPlantLabel.text = "Дата посева " + plant.displayLandingDate
         cell.harwestTimeLable.text = "Сбор урожая " + plant.displayMaturationDate
-        cell.squareOfPlantLable.text = "Площадь посевов: \(plant.squareOfPlant) соток"
+        cell.squareOfPlantLable.text = "Площадь: \(plant.squareOfPlant) соток"
         cell.showsReorderControl = true
-        
-        
     }
 }
 
@@ -91,8 +123,4 @@ extension ListViewController {
             tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
-}
-
-extension ListViewController: UITableViewDelegate {
-    
 }

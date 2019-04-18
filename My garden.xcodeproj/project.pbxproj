@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E43731DD226427B700F3E4C5 /* PlantListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43731DC226427B700F3E4C5 /* PlantListTableViewCell.swift */; };
 		E4780F7E225F1DD900B7D8B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4780F7D225F1DD900B7D8B1 /* DetailViewController.swift */; };
+		E47FCC132267165E00527CD5 /* Plants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC122267165E00527CD5 /* Plants.swift */; };
 		E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F391225F111C0029FEEC /* AppDelegate.swift */; };
 		E496F394225F111C0029FEEC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F393225F111C0029FEEC /* ListViewController.swift */; };
 		E496F397225F111C0029FEEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E496F395225F111C0029FEEC /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		E43731DC226427B700F3E4C5 /* PlantListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListTableViewCell.swift; sourceTree = "<group>"; };
 		E4780F7D225F1DD900B7D8B1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E4780F7F225F4B5100B7D8B1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E47FCC122267165E00527CD5 /* Plants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plants.swift; sourceTree = "<group>"; };
 		E496F38E225F111C0029FEEC /* My garden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My garden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E496F391225F111C0029FEEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E496F393225F111C0029FEEC /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				E496F3A9225F11DE0029FEEC /* Plant.swift */,
+				E47FCC122267165E00527CD5 /* Plants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E496F394225F111C0029FEEC /* ListViewController.swift in Sources */,
+				E47FCC132267165E00527CD5 /* Plants.swift in Sources */,
 				E496F3AA225F11DE0029FEEC /* Plant.swift in Sources */,
 				E49E4EF42264C64000B7A3AF /* UITextField+Extension.swift in Sources */,
 				E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */,
