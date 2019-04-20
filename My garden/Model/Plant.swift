@@ -26,7 +26,7 @@ struct Plant {
     var plantClass: PlantClass
     var maturationTime: Int // in days
     var landingDate: Date
-    var squareOfPlant: Double = 0 // * 100 m square
+    var squareOfPlant: Double = 0 //  square m
     var harvest: Double = 0
     
     init(id: UUID = UUID(), name: String = "", sort: String = "", image: String = "addPhoto", description: String = "", plantClass: PlantClass = .none, maturationTime: Int = 0, landingDate: Date = Date(), squareOfPlant: Double = 0, harvest: Double = 0) {
@@ -58,10 +58,9 @@ extension Plant {
         dateFormater.dateFormat = "dd/M/YYYY"
         return dateFormater.string(from: landingDate)
     }
-    var expectedYield: Double { //*100 kg / squareOfPlant
+    var expectedYield: Double { //kg * m / squareOfPlant
         return squareOfPlant * harvest
-    }
-}
+    }}
 
 // MARK: - Encode and Decode
 extension Plant: Codable {

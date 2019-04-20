@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-
+    
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var sortLabel: UILabel!
     @IBOutlet weak var dateLable: UILabel!
@@ -50,32 +50,40 @@ class DetailViewController: UIViewController {
 // MARK: - Custom Methods
 extension DetailViewController {
     func setupUI() {
+        
         guard let plant = plant else { return }
         title = plant.name
+        
         if plant.image == plant.id.description {
             if let image = save.loadImageWithName(plant.image) {
                 plantImage.image = image
             }
+        }
+        
+        if plant.image == "addPhoto" {
+            plantImage.image = UIImage(named: "noPhoto")
         } else {
             plantImage.image = UIImage(named: plant.image)
         }
+        
         sortLabel.text = "Сорт - \"\(plant.sort)\""
         dateLable.text = """
         Дата посадки: \(plant.displayLandingDate)
         Дата сбора урожая: \(plant.displayMaturationDate)
         """
         expectedYieldLabel.text = """
-            Ожидаемый урожай \(plant.expectedYield) Kg
-            С площади \(plant.squareOfPlant) соток
+        Ожидаемый урожай \(plant.expectedYield) Kg
+        С площади \(plant.squareOfPlant) кв.м
         """
         descriptionLabel.text = plant.description
-
+        
         
     }
     func updateUI(with size: CGSize){
         topStackView.axis = size.width < size.height ? .vertical :  .horizontal
     }
 }
+
 
 // MARK: - Navigation
 extension DetailViewController {

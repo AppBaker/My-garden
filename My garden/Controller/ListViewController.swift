@@ -71,9 +71,16 @@ extension ListViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            
+            let row = indexPath.row
+            let deletedRow = self.plants[row]
+            if deletedRow.id.description == deletedRow.image {
+                self.save.deleteImage(deletedRow.image)
+            }
+            
             self.plants.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            //            tableView.reloadData()
+            try? self.plants.encoded?.write(to: self.save.archiveURL, options: .noFileProtection)
         }
         return [deleteAction]
     }
@@ -95,6 +102,8 @@ extension ListViewController {
         guard let cell = cell as? PlantListTableViewCell else { return }
         if plant.image == plant.id.description {
             cell.plantImageView.image = save.loadImageWithName(plant.image)
+        } else if plant.image == "addPhoto" {
+            cell.plantImageView.image = UIImage(named: "noPhoto")
         } else {
             cell.plantImageView.image = UIImage(named: plant.image)
         }

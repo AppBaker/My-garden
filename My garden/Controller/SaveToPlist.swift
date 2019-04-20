@@ -27,4 +27,13 @@ class SaveToPlist {
         let image = UIImage(data: data)
         return image
     }
+    
+    func deleteImage(_ name: String) {
+        let url = documentDirectory.appendingPathComponent(name).appendingPathExtension("png")
+        do{
+        try FileManager.default.removeItem(at: url)
+        } catch {
+            print(error)
+        }
+    }
 }
