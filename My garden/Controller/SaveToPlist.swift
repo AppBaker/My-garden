@@ -23,7 +23,7 @@ class SaveToPlist {
     }
     func loadImageWithName(_ name: String) -> UIImage? {
         let url = documentDirectory.appendingPathComponent(name).appendingPathExtension("png")
-        guard let data = try? Data(contentsOf: url) else { print("Can't load image"); return nil }
+        guard let data = try? Data(contentsOf: url) else { return nil }
         let image = UIImage(data: data)
         return image
     }

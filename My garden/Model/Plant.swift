@@ -9,25 +9,25 @@
 import UIKit
 
 enum PlantClass: String, CaseIterable, Codable {
-    case vegetable = "овощи"
-    case fruit = "фрукты"
-    case berry = "ягода"
-    case grass = "трава"
-    case flowers = "цветы"
-    case none = "Нет"
+    case none = "none"
+    case vegetable = "vegetables"
+    case fruit = "fruits"
+    case berry = "berry"
+    case grass = "grass"
+    case flowers = "flowers"
 }
 
-struct Plant {
+struct Plant: Codable {
     var id = UUID()
-    var name: String = ""
-    var sort: String = "Нет"
+    var name: String
+    var sort: String
     var image: String
     var description: String
     var plantClass: PlantClass
     var maturationTime: Int // in days
     var landingDate: Date
-    var squareOfPlant: Double = 0 //  square m
-    var harvest: Double = 0
+    var squareOfPlant: Double //  sq.m
+    var harvest: Double // Kg*sq.m
     
     init(id: UUID = UUID(), name: String = "", sort: String = "", image: String = "addPhoto", description: String = "", plantClass: PlantClass = .none, maturationTime: Int = 0, landingDate: Date = Date(), squareOfPlant: Double = 0, harvest: Double = 0) {
         self.name = name
@@ -58,15 +58,8 @@ extension Plant {
         dateFormater.dateFormat = "dd/M/YYYY"
         return dateFormater.string(from: landingDate)
     }
-    var expectedYield: Double { //kg * m / squareOfPlant
+    var expectedYield: Double { // kg * m / squareOfPlant
         return squareOfPlant * harvest
-    }}
-
-// MARK: - Encode and Decode
-extension Plant: Codable {
-    var encoded: Data? {
-        let encoder = PropertyListEncoder()
-        return try? encoder.encode(self)
     }
     
 }

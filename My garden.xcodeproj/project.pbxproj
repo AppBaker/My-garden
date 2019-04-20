@@ -14,6 +14,8 @@
 		E469DE29226B8C7C009357E3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DE25226B8C7C009357E3 /* ListViewController.swift */; };
 		E469DE2A226B8C7C009357E3 /* SaveToPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DE26226B8C7C009357E3 /* SaveToPlist.swift */; };
 		E469DE2B226B8C7C009357E3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DE27226B8C7C009357E3 /* DetailViewController.swift */; };
+		E469DE2F226B941A009357E3 /* Double+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DE2E226B941A009357E3 /* Double+extension.swift */; };
+		E469DE31226BA1B3009357E3 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DE30226BA1B3009357E3 /* String+extension.swift */; };
 		E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496F391225F111C0029FEEC /* AppDelegate.swift */; };
 		E496F397225F111C0029FEEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E496F395225F111C0029FEEC /* Main.storyboard */; };
 		E496F399225F111E0029FEEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E496F398225F111E0029FEEC /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		E469DE25226B8C7C009357E3 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = "My garden/Controller/ListViewController.swift"; sourceTree = SOURCE_ROOT; };
 		E469DE26226B8C7C009357E3 /* SaveToPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SaveToPlist.swift; path = "My garden/Controller/SaveToPlist.swift"; sourceTree = SOURCE_ROOT; };
 		E469DE27226B8C7C009357E3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "My garden/Controller/DetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		E469DE2E226B941A009357E3 /* Double+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double+extension.swift"; path = "My garden/Extensions/Double+extension.swift"; sourceTree = SOURCE_ROOT; };
+		E469DE30226BA1B3009357E3 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "My garden/Extensions/String+extension.swift"; sourceTree = SOURCE_ROOT; };
 		E4780F7F225F4B5100B7D8B1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E496F38E225F111C0029FEEC /* My garden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My garden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E496F391225F111C0029FEEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				E4DFB59D226B8C1200C54595 /* UITextField+extension.swift */,
+				E469DE2E226B941A009357E3 /* Double+extension.swift */,
+				E469DE30226BA1B3009357E3 /* String+extension.swift */,
 			);
 			name = Extensions;
 			path = Controller/Extensions;
@@ -206,7 +212,9 @@
 				E496F392225F111C0029FEEC /* AppDelegate.swift in Sources */,
 				E469DE2A226B8C7C009357E3 /* SaveToPlist.swift in Sources */,
 				E41CB265226B88DB00F8EFC2 /* Plants.swift in Sources */,
+				E469DE31226BA1B3009357E3 /* String+extension.swift in Sources */,
 				E469DE28226B8C7C009357E3 /* AddNewPlantViewController.swift in Sources */,
+				E469DE2F226B941A009357E3 /* Double+extension.swift in Sources */,
 				E43731DD226427B700F3E4C5 /* PlantListTableViewCell.swift in Sources */,
 				E4DFB59E226B8C1200C54595 /* UITextField+extension.swift in Sources */,
 				E469DE29226B8C7C009357E3 /* ListViewController.swift in Sources */,

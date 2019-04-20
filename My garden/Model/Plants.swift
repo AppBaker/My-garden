@@ -12,7 +12,7 @@ typealias Plants = [Plant]
 
 extension Plants {
     var title: String {
-        return "Список растений"
+        return "Garden"
     }
     
     var encoded: Data? {

@@ -55,25 +55,21 @@ extension DetailViewController {
         title = plant.name
         
         if plant.image == plant.id.description {
-            if let image = save.loadImageWithName(plant.image) {
-                plantImage.image = image
-            }
-        }
-        
-        if plant.image == "addPhoto" {
+            plantImage.image = save.loadImageWithName(plant.image)
+        } else if plant.image == "addPhoto" {
             plantImage.image = UIImage(named: "noPhoto")
         } else {
             plantImage.image = UIImage(named: plant.image)
         }
         
-        sortLabel.text = "Сорт - \"\(plant.sort)\""
+        sortLabel.text = "sort - \"\(plant.sort)\""
         dateLable.text = """
-        Дата посадки: \(plant.displayLandingDate)
-        Дата сбора урожая: \(plant.displayMaturationDate)
+        Sowing date: \(plant.displayLandingDate)
+        Harvesting: \(plant.displayMaturationDate)
         """
         expectedYieldLabel.text = """
-        Ожидаемый урожай \(plant.expectedYield) Kg
-        С площади \(plant.squareOfPlant) кв.м
+        Expected yield \(plant.expectedYield.toString()) kg
+        From the square \(plant.squareOfPlant.toString()) sq.м
         """
         descriptionLabel.text = plant.description
         

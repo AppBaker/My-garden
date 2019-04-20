@@ -109,10 +109,10 @@ extension ListViewController {
         }
         
         cell.nameLabel.text = plant.name + " (\(plant.plantClass.rawValue))"
-        cell.sortLabel.text = "сорт - \"\(plant.sort)\""
-        cell.dateOfPlantLabel.text = "Дата посева " + plant.displayLandingDate
-        cell.harwestTimeLable.text = "Сбор урожая " + plant.displayMaturationDate
-        cell.squareOfPlantLable.text = "Площадь: \(plant.squareOfPlant) соток"
+        cell.sortLabel.text = "sort - \"\(plant.sort)\""
+        cell.dateOfPlantLabel.text = "Sowing date " + plant.displayLandingDate
+        cell.harwestTimeLable.text = "Harvesting " + plant.displayMaturationDate
+        cell.squareOfPlantLable.text = "Square: \(plant.squareOfPlant.toString()) sq.m"
         cell.showsReorderControl = true
     }
 }

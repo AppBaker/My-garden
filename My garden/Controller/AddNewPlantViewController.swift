@@ -59,15 +59,11 @@ class AddNewPlantViewController: UIViewController {
         showPlant()
         updateUI()
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        savePlant()
-    }
 
     //MARK: - IBActions
     
     @IBAction func abbImageButtonPressed(_ sender: UIButton) {
-        
+        saveTextInFields()
         let alert = UIAlertController(title: "Photo", message: "Choose photo", preferredStyle: .alert)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -229,12 +225,23 @@ extension AddNewPlantViewController {
         plant.plantClass = plantClass
         plant.landingDate = landingDate
         plant.maturationTime = Int(maturationTimeTextField.text ?? "0") ?? 0
-        plant.squareOfPlant = Double(squareTextField.text ?? "0") ?? 0
-        plant.harvest = Double(harvestTextField.text ?? "0") ?? 0
+        plant.squareOfPlant = Double(squareTextField.text?.setDotInsteadOfComma() ?? "0") ?? 0
+        plant.harvest = Double(harvestTextField.text?.setDotInsteadOfComma() ?? "0") ?? 0
         guard let image = plantImage else { return }
             if plant.image == plant.id.description {
             save.saveImage(image, with: plant.id.description)
         }
+    }
+    
+    func saveTextInFields() {
+        plant.name = nameTextField.text ?? ""
+        plant.sort = sortTextField.text ?? ""
+        plant.description = descriptionTextField.text ?? ""
+        plant.plantClass = plantClass
+        plant.landingDate = landingDate
+        plant.maturationTime = Int(maturationTimeTextField.text ?? "0") ?? 0
+        plant.squareOfPlant = Double(squareTextField.text?.setDotInsteadOfComma() ?? "0") ?? 0
+        plant.harvest = Double(harvestTextField.text?.setDotInsteadOfComma() ?? "0") ?? 0
     }
     
     func showPlant() {
@@ -258,8 +265,8 @@ extension AddNewPlantViewController {
         landingDate = plant.landingDate
 
         maturationTimeTextField.text = "\(plant.maturationTime)"
-        squareTextField.text = "\(plant.squareOfPlant)"
-        harvestTextField.text = "\(plant.harvest)"
+        squareTextField.text = "\(plant.squareOfPlant.toString())"
+        harvestTextField.text = "\(plant.harvest.toString())"
     }
     
     
@@ -324,13 +331,12 @@ extension AddNewPlantViewController: UIImagePickerControllerDelegate, UINavigati
         if let newImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             let size = CGSize(width: 500.0, height: 500.0)
             let resizedImage = resizeImage(image: newImage, targetSize: size)
-            addImageButton.setImage(resizedImage, for: [])
+            DispatchQueue.main.async {
+                self.addImageButton.setImage(resizedImage, for: [])
+            }
             plantImage = resizedImage
             plant.image = plant.id.description
-            print(save.archiveURL)
         }
-        
         imagePicker.dismiss(animated: true, completion: nil)
-        updateUI()
     }
 }
