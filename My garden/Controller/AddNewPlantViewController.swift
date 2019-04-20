@@ -340,3 +340,10 @@ extension AddNewPlantViewController: UIImagePickerControllerDelegate, UINavigati
         imagePicker.dismiss(animated: true, completion: nil)
     }
 }
+
+extension AddNewPlantViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+}

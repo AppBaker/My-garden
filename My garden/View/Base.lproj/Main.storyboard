@@ -154,6 +154,7 @@
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <connections>
                                                                             <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="TbK-9w-Qye"/>
+                                                                            <outlet property="delegate" destination="AnU-Rt-0hm" id="Vch-gH-H0d"/>
                                                                         </connections>
                                                                     </textField>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="565-l5-vea">
@@ -169,6 +170,7 @@
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <connections>
                                                                             <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="vKT-0K-pac"/>
+                                                                            <outlet property="delegate" destination="AnU-Rt-0hm" id="gRk-dG-xFN"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -202,6 +204,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="p4V-R0-G5V"/>
+                                                                    <outlet property="delegate" destination="AnU-Rt-0hm" id="UNe-GU-gbD"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
