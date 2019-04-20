@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     
     var plant: Plant?
     var plantIndex: IndexPath?
+    let save = SaveToPlist()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,17 +46,18 @@ class DetailViewController: UIViewController {
             topStackView.axis = .horizontal
         }
     }
-    
 }
 // MARK: - Custom Methods
 extension DetailViewController {
     func setupUI() {
         guard let plant = plant else { return }
         title = plant.name
-        if let image = plant.image {
-            plantImage.image = image
+        if plant.image == plant.id.description {
+            if let image = save.loadImageWithName(plant.image) {
+                plantImage.image = image
+            }
         } else {
-            plantImage.image = UIImage(named: plant.photo)            
+            plantImage.image = UIImage(named: plant.image)
         }
         sortLabel.text = "Сорт - \"\(plant.sort)\""
         dateLable.text = """

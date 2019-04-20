@@ -10,6 +10,7 @@ import UIKit
 
 class AddNewPlantViewController: UIViewController {
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -28,10 +29,13 @@ class AddNewPlantViewController: UIViewController {
     let imagePicker = UIImagePickerController()
     
     var plant = Plant()
+    var plantImage: UIImage?
     var plantClass: PlantClass!
     var landingDate: Date!
     
     var plantIndex: IndexPath?
+    //save
+    let save = SaveToPlist()
     
     
     override func viewDidLoad() {
@@ -45,6 +49,10 @@ class AddNewPlantViewController: UIViewController {
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,12 +70,27 @@ class AddNewPlantViewController: UIViewController {
         
         let alert = UIAlertController(title: "Photo", message: "Choose photo", preferredStyle: .alert)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
+            } else {
+                let cameraAvailable = UIAlertController(title: "Camera not available", message: "You can choose photo from library ", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                cameraAvailable.addAction(cancelAction)
+                self.present(cameraAvailable, animated: true, completion: nil)
+            }
         }
         let libraryAction = UIAlertAction(title: "Photo library", style: .default) { (action) in
-            self.imagePicker.sourceType = .photoLibrary
-            self.present(self.imagePicker, animated: true, completion: nil)
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                self.imagePicker.sourceType = .photoLibrary
+                self.present(self.imagePicker, animated: true, completion: nil)
+            } else {
+                let cameraAvailable = UIAlertController(title: "Photo library not available", message: "", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                cameraAvailable.addAction(cancelAction)
+                self.present(cameraAvailable, animated: true, completion: nil)
+            }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
@@ -78,6 +101,11 @@ class AddNewPlantViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    //MARK: - ...Selectors
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 }
 
 // MARK: - Keyboard apearence
@@ -86,18 +114,24 @@ extension AddNewPlantViewController {
     //    Register keyboard appearance
     func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     // Selectors
     @objc func kbDidShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height + kbFrameSize.height)
-    }
-    @objc func kbDidHide() {
-        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+        bottomConstraint.constant = kbFrameSize.height
     }
     
+    @objc func kbDidHide() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.bottomConstraint.constant = 0
+                self.updateViewConstraints()
+            })
+        }
+    }
 }
 
 // MARK: - UIPickerViewDataSource, UIPickerViewDelegate
@@ -109,9 +143,9 @@ extension AddNewPlantViewController: UIPickerViewDataSource, UIPickerViewDelegat
         datePicker.datePickerMode = .date
         
         let toolBarDatePicker = UIToolbar()
-        toolBarDatePicker.barStyle = UIBarStyle.default
+        toolBarDatePicker.barStyle = .blackTranslucent
         toolBarDatePicker.isTranslucent = true
-        toolBarDatePicker.tintColor = UIColor.black
+        toolBarDatePicker.tintColor = UIColor.white
         toolBarDatePicker.sizeToFit()
         
         let doneButtonDate = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(doneDatePicker))
@@ -125,9 +159,9 @@ extension AddNewPlantViewController: UIPickerViewDataSource, UIPickerViewDelegat
         
         plantClassTextField.inputView = pickerOfPlantClass
         let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
+        toolBar.barStyle = .blackTranslucent
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.black
+        toolBar.tintColor = UIColor.white
         toolBar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(donePicker))
@@ -189,21 +223,28 @@ extension AddNewPlantViewController {
     }
     
     func savePlant() {
-            plant.name = nameTextField.text ?? ""
-            plant.sort = sortTextField.text ?? ""
-            plant.description = descriptionTextField.text ?? ""
-            plant.plantClass = plantClass
-            plant.landingDate = landingDate
-            plant.maturationTime = Int(maturationTimeTextField.text ?? "0") ?? 0
-            plant.squareOfPlant = Double(squareTextField.text ?? "0") ?? 0
-            plant.harvest = Double(harvestTextField.text ?? "0") ?? 0
+        plant.name = nameTextField.text ?? ""
+        plant.sort = sortTextField.text ?? ""
+        plant.description = descriptionTextField.text ?? ""
+        plant.plantClass = plantClass
+        plant.landingDate = landingDate
+        plant.maturationTime = Int(maturationTimeTextField.text ?? "0") ?? 0
+        plant.squareOfPlant = Double(squareTextField.text ?? "0") ?? 0
+        plant.harvest = Double(harvestTextField.text ?? "0") ?? 0
+        guard let image = plantImage else { return }
+            if plant.image == plant.id.description {
+            save.saveImage(image, with: plant.id.description)
+        }
     }
     
     func showPlant() {
-        if let image = plant.image {
-            addImageButton.setImage(image, for: [])
+        if plant.image == plant.id.description {
+            if let image = save.loadImageWithName(plant.image){
+                addImageButton.setImage(image, for: [])
+            }
+            
         } else {
-            addImageButton.setImage(UIImage(named: plant.photo), for: [])
+            addImageButton.setImage(UIImage(named: plant.image), for: [])
         }
         nameTextField.text = plant.name
         sortTextField.text = plant.sort
@@ -222,7 +263,7 @@ extension AddNewPlantViewController {
     }
     
     
-    @IBAction func textFieldChanged() {
+    @IBAction func textFieldChanged(_ sender: UITextField) {
         updateUI()
     }
     
@@ -263,6 +304,10 @@ extension AddNewPlantViewController {
         
         return newImage!
     }
+    
+    func scrollToTextField(textField: UITextField) {
+        scrollView.scrollRectToVisible(textField.frame, animated: true)
+    }
 }
 
 // MARK: - Navigation
@@ -280,8 +325,11 @@ extension AddNewPlantViewController: UIImagePickerControllerDelegate, UINavigati
             let size = CGSize(width: 500.0, height: 500.0)
             let resizedImage = resizeImage(image: newImage, targetSize: size)
             addImageButton.setImage(resizedImage, for: [])
-            plant.image = resizedImage
+            plantImage = resizedImage
+            plant.image = plant.id.description
+            print(save.archiveURL)
         }
+        
         imagePicker.dismiss(animated: true, completion: nil)
         updateUI()
     }

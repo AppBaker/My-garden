@@ -1,8 +1,8 @@
 //
-//  UITextField+Extension.swift
+//  UITextField+extension.swift
 //  My garden
 //
-//  Created by Ivan Nikitin on 15/04/2019.
+//  Created by Ivan Nikitin on 20/04/2019.
 //  Copyright © 2019 Ivan Nikitin. All rights reserved.
 //
 

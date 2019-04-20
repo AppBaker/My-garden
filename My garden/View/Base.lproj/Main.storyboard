@@ -122,15 +122,15 @@
         <scene sceneID="FnW-cW-sF5">
             <objects>
                 <viewController id="AnU-Rt-0hm" customClass="AddNewPlantViewController" customModule="My_garden" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iay-e4-ErM" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
+                    <view key="view" contentMode="scaleToFill" id="iay-e4-ErM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39A-ct-u6C">
-                                <rect key="frame" x="0.0" y="64" width="320" height="636"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="466"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltY-af-SoD">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="466"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="HLm-Z9-QGH">
                                                 <rect key="frame" x="16" y="16" width="288" height="430"/>
@@ -153,7 +153,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <connections>
-                                                                            <action selector="textFieldChanged" destination="AnU-Rt-0hm" eventType="editingChanged" id="ZX5-jr-vAf"/>
+                                                                            <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="TbK-9w-Qye"/>
                                                                         </connections>
                                                                     </textField>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="565-l5-vea">
@@ -168,7 +168,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <connections>
-                                                                            <action selector="textFieldChanged" destination="AnU-Rt-0hm" eventType="editingChanged" id="ZuQ-9K-aan"/>
+                                                                            <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="vKT-0K-pac"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -201,7 +201,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
-                                                                    <action selector="textFieldChanged" destination="AnU-Rt-0hm" eventType="editingChanged" id="Qkh-Wf-6ql"/>
+                                                                    <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="p4V-R0-G5V"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -220,6 +220,9 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="o9R-mc-U3f"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -241,8 +244,8 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <connections>
-                                                                            <action selector="landingDatePick:" destination="AnU-Rt-0hm" eventType="editingDidEnd" id="wGy-ct-rLk"/>
                                                                             <action selector="landingDatePick:" destination="AnU-Rt-0hm" eventType="editingDidBegin" id="wMI-Ls-uNE"/>
+                                                                            <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="VXy-GE-MCd"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -262,7 +265,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                         <connections>
-                                                                            <action selector="textFieldChanged" destination="AnU-Rt-0hm" eventType="editingChanged" id="4P4-Wm-Aj7"/>
+                                                                            <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="1an-vl-PpI"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -287,7 +290,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad" textContentType="one-time-code"/>
                                                                         <connections>
-                                                                            <action selector="textFieldChanged" destination="AnU-Rt-0hm" eventType="editingChanged" id="QJU-QN-bVa"/>
+                                                                            <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="bWQ-Xl-VOl"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -307,7 +310,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                         <connections>
-                                                                            <action selector="textFieldChanged" destination="AnU-Rt-0hm" eventType="editingChanged" id="sYc-6j-sjm"/>
+                                                                            <action selector="textFieldChanged:" destination="AnU-Rt-0hm" eventType="editingChanged" id="6fG-5S-blm"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -322,7 +325,7 @@
                                             <constraint firstItem="HLm-Z9-QGH" firstAttribute="top" secondItem="ltY-af-SoD" secondAttribute="top" constant="16" id="Tsm-od-1bR"/>
                                             <constraint firstItem="HLm-Z9-QGH" firstAttribute="leading" secondItem="ltY-af-SoD" secondAttribute="leading" constant="16" id="c8y-Q5-YAc"/>
                                             <constraint firstAttribute="trailing" secondItem="HLm-Z9-QGH" secondAttribute="trailing" constant="16" id="sd2-cP-qZa"/>
-                                            <constraint firstAttribute="height" constant="600" id="uMX-l2-eBI"/>
+                                            <constraint firstAttribute="height" constant="466" id="uMX-l2-eBI"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -351,9 +354,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="320" height="700"/>
+                    <size key="freeformSize" width="320" height="530"/>
                     <connections>
                         <outlet property="addImageButton" destination="M7s-RQ-V9r" id="EVt-7x-uyv"/>
+                        <outlet property="bottomConstraint" destination="0HP-SX-7CE" id="fp2-dN-AxL"/>
                         <outlet property="descriptionTextField" destination="5X6-nR-nl3" id="0hE-he-aKl"/>
                         <outlet property="harvestTextField" destination="dV6-3x-MbX" id="6YM-Vv-Bke"/>
                         <outlet property="landingDateTextField" destination="2Oo-5u-0jW" id="jA2-bR-J1w"/>
@@ -369,7 +373,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rja-WT-eNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DNC-U8-37m" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1080" y="409"/>
+            <point key="canvasLocation" x="1080" y="408.80281690140845"/>
         </scene>
         <!--Title-->
         <scene sceneID="FhQ-Ux-abn">

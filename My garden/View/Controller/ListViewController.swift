@@ -13,13 +13,22 @@ class ListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var plants = Plants.loadSample()
-    var isEditingOn: Bool = true
+    
+    //save
+    let save = SaveToPlist()
+    //    var isEditingOn: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         navigationItem.leftBarButtonItem = editButtonItem
         title = plants.title
+         
+        if let data = try? Data(contentsOf: save.archiveURL) {
+            if let decodetPlants = Plants(from: data) {
+                plants = decodetPlants
+            }
+        }
     }
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
@@ -64,7 +73,7 @@ extension ListViewController: UITableViewDataSource {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             self.plants.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-//            tableView.reloadData()
+            //            tableView.reloadData()
         }
         return [deleteAction]
     }
@@ -84,10 +93,10 @@ extension ListViewController {
     ///   - plant: Data for confing
     func configure(cell: UITableViewCell, with plant: Plant) {
         guard let cell = cell as? PlantListTableViewCell else { return }
-        if let image = plant.image {
-            cell.plantImageView.image = image
+        if plant.image == plant.id.description {
+            cell.plantImageView.image = save.loadImageWithName(plant.image)
         } else {
-            cell.plantImageView.image = UIImage(named: plant.photo)
+            cell.plantImageView.image = UIImage(named: plant.image)
         }
         
         cell.nameLabel.text = plant.name + " (\(plant.plantClass.rawValue))"
@@ -113,6 +122,7 @@ extension ListViewController {
     @IBAction func unwind(segue: UIStoryboardSegue) {
         guard segue.identifier == "addNewPlant" else { return }
         guard let controller = segue.source as? AddNewPlantViewController else { return }
+        
         let plant = controller.plant
         if let plantIndex = controller.plantIndex {
             plants[plantIndex.row] = plant
@@ -122,5 +132,6 @@ extension ListViewController {
             plants.append(plant)
             tableView.insertRows(at: [indexPath], with: .automatic)
         }
+        try? plants.encoded?.write(to: save.archiveURL, options: .noFileProtection)
     }
 }
