@@ -59,39 +59,47 @@ class AddNewPlantViewController: UIViewController {
         showPlant()
         updateUI()
     }
-
+    
     //MARK: - IBActions
     
     @IBAction func abbImageButtonPressed(_ sender: UIButton) {
         saveTextInFields()
         let alert = UIAlertController(title: "Photo", message: "Choose photo", preferredStyle: .alert)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
-            } else {
-                let cameraAvailable = UIAlertController(title: "Camera not available", message: "You can choose photo from library ", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-                cameraAvailable.addAction(cancelAction)
-                self.present(cameraAvailable, animated: true, completion: nil)
-            }
         }
         let libraryAction = UIAlertAction(title: "Photo library", style: .default) { (action) in
-            
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                self.imagePicker.sourceType = .photoLibrary
-                self.present(self.imagePicker, animated: true, completion: nil)
-            } else {
-                let cameraAvailable = UIAlertController(title: "Photo library not available", message: "", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-                cameraAvailable.addAction(cancelAction)
-                self.present(cameraAvailable, animated: true, completion: nil)
-            }
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
-        alert.addAction(cameraAction)
-        alert.addAction(libraryAction)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alert.addAction(cameraAction)
+        } else {
+            alert.message =
+            """
+            Choose photo from photo library
+            Camera not available
+            """
+        }
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            alert.addAction(libraryAction)
+        } else {
+            alert.message =
+            """
+            Choose photo from camera
+            Photo library not available
+            """
+        }
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) && !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            alert.message =
+            """
+            Camera and photo library not available
+            """
+        }
+        
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
@@ -228,7 +236,7 @@ extension AddNewPlantViewController {
         plant.squareOfPlant = Double(squareTextField.text?.setDotInsteadOfComma() ?? "0") ?? 0
         plant.harvest = Double(harvestTextField.text?.setDotInsteadOfComma() ?? "0") ?? 0
         guard let image = plantImage else { return }
-            if plant.image == plant.id.description {
+        if plant.image == plant.id.description {
             save.saveImage(image, with: plant.id.description)
         }
     }
@@ -263,7 +271,7 @@ extension AddNewPlantViewController {
         dateFormatter.dateFormat = "dd MMM yyyy"
         landingDateTextField.text = dateFormatter.string(from: plant.landingDate)
         landingDate = plant.landingDate
-
+        
         maturationTimeTextField.text = "\(plant.maturationTime)"
         squareTextField.text = "\(plant.squareOfPlant.toString())"
         harvestTextField.text = "\(plant.harvest.toString())"
