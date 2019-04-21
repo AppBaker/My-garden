@@ -64,7 +64,7 @@ class AddNewPlantViewController: UIViewController {
     
     @IBAction func abbImageButtonPressed(_ sender: UIButton) {
         saveTextInFields()
-        let alert = UIAlertController(title: "Photo", message: "Choose photo", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Photo", message: "Choose photo from camera or photo library", preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
@@ -81,6 +81,7 @@ class AddNewPlantViewController: UIViewController {
             Camera and photo library not available
             """
         } else if UIImagePickerController.isSourceTypeAvailable(.camera) && !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            
             alert.addAction(cameraAction)
             alert.message =
             """
