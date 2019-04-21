@@ -64,7 +64,7 @@ class AddNewPlantViewController: UIViewController {
     
     @IBAction func abbImageButtonPressed(_ sender: UIButton) {
         saveTextInFields()
-        let alert = UIAlertController(title: "Photo", message: "Choose photo", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Photo", message: "Choose photo", preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
@@ -75,33 +75,31 @@ class AddNewPlantViewController: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            alert.addAction(cameraAction)
-        } else {
-            alert.message =
-            """
-            Choose photo from photo library
-            Camera not available
-            """
-        }
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            alert.addAction(libraryAction)
-        } else {
-            alert.message =
-            """
-            Choose photo from camera
-            Photo library not available
-            """
-        }
         if !UIImagePickerController.isSourceTypeAvailable(.camera) && !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             alert.message =
             """
             Camera and photo library not available
             """
+        } else if UIImagePickerController.isSourceTypeAvailable(.camera) && !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            alert.addAction(cameraAction)
+            alert.message =
+            """
+            Choose photo from camera
+            Photo library not available
+            """
+        } else if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) && !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alert.addAction(libraryAction)
+            alert.message =
+            """
+            Choose photo from photo library
+            Camera not available
+            """
+        } else {
+            alert.addAction(cameraAction)
+            alert.addAction(libraryAction)
         }
         
         alert.addAction(cancelAction)
-        
         present(alert, animated: true, completion: nil)
     }
     
